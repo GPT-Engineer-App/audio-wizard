@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
-const AudioPlayer = ({ src }) => {
+const AudioPlayer = ({ filename }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -41,7 +41,7 @@ const AudioPlayer = ({ src }) => {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <audio ref={audioRef} src={src} />
+      <audio ref={audioRef} src={`http://localhost:3001/stream/${filename}`} />
       <div className="flex space-x-2">
         <Button onClick={handlePlayPause}>
           {isPlaying ? "Pause" : "Play"}
