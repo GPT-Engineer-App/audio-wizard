@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { removeSilence } from "@/lib/audioUtils"; // Import the utility function
 
 const AudioRecorderComponent = () => {
   const [audioURL, setAudioURL] = useState(null);
@@ -13,9 +14,10 @@ const AudioRecorderComponent = () => {
     mediaRecorderRef.current.ondataavailable = (event) => {
       audioChunksRef.current.push(event.data);
     };
-    mediaRecorderRef.current.onstop = () => {
-      const audioBlob = new Blob(audioChunksRef.current.current, { type: "audio/wav" });
-      const url = URL.createObjectURL(audioBlob);
+    mediaRecorderRef.current.onstop = async () => {
+      const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
+      const editedAudioBlob = await removeSilence(audioBlob); // Remove silence
+      const url = URL.createObjectURL(editedAudioBlob);
       setAudioURL(url);
       audioChunksRef.current = [];
     };
