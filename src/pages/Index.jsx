@@ -8,6 +8,7 @@ import AudioWaveform from "@/components/AudioWaveform";
 import AudioSpectrogram from "@/components/AudioSpectrogram";
 import BatchAudioProcessor from "@/components/BatchAudioProcessor";
 import LiveAudioStream from "@/components/LiveAudioStream";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Index = () => {
   const [username, setUsername] = useState("");
@@ -61,6 +62,11 @@ const Index = () => {
         <AudioSpectrogram src="path/to/your/audio/file.mp3" />
         <BatchAudioProcessor />
         <LiveAudioStream />
+        <div className="mt-4">
+          <Link to="/file-management">
+            <Button className="w-full">Go to File Management</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
