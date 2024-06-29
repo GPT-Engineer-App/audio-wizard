@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import AudioRecorderComponent from "@/components/AudioRecorder";
+import AudioPlayer from "@/components/AudioPlayer";
 
 const Index = () => {
   const [username, setUsername] = useState("");
@@ -51,6 +52,7 @@ const Index = () => {
           </Alert>
         )}
         <AudioRecorderComponent />
+        <AudioPlayer src="path/to/your/audio/file.mp3" />
       </div>
     </div>
   );
