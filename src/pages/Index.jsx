@@ -6,6 +6,7 @@ import AudioRecorderComponent from "@/components/AudioRecorder";
 import AudioPlayer from "@/components/AudioPlayer";
 import AudioWaveform from "@/components/AudioWaveform";
 import AudioSpectrogram from "@/components/AudioSpectrogram";
+import BatchAudioProcessor from "@/components/BatchAudioProcessor";
 
 const Index = () => {
   const [username, setUsername] = useState("");
@@ -57,6 +58,7 @@ const Index = () => {
         <AudioPlayer src="path/to/your/audio/file.mp3" />
         <AudioWaveform src="path/to/your/audio/file.mp3" />
         <AudioSpectrogram src="path/to/your/audio/file.mp3" />
+        <BatchAudioProcessor />
       </div>
     </div>
   );
