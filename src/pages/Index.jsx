@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import AudioRecorderComponent from "@/components/AudioRecorder";
 
 const Index = () => {
   const [username, setUsername] = useState("");
@@ -49,6 +50,7 @@ const Index = () => {
             <AlertDescription>{message}</AlertDescription>
           </Alert>
         )}
+        <AudioRecorderComponent />
       </div>
     </div>
   );
