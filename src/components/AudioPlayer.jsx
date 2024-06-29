@@ -4,6 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { applyDistortion, applyDelay, applyFilter } from "@/lib/audioEffects"; // Import audio effects
 
 const AudioPlayer = ({ filename }) => {
   const audioRef = useRef(null);
@@ -13,11 +14,24 @@ const AudioPlayer = ({ filename }) => {
   const [treble, setTreble] = useState(0);
   const [presets, setPresets] = useState([]);
   const [selectedPreset, setSelectedPreset] = useState("");
+  const [audioContext, setAudioContext] = useState(null);
+  const [audioBuffer, setAudioBuffer] = useState(null);
+  const [effect, setEffect] = useState("");
 
   useEffect(() => {
     const savedPresets = JSON.parse(localStorage.getItem("audioPresets")) || [];
     setPresets(savedPresets);
   }, []);
+
+  useEffect(() => {
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+    setAudioContext(context);
+
+    fetch(`http://localhost:3001/stream/${filename}`)
+      .then(response => response.arrayBuffer())
+      .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
+      .then(buffer => setAudioBuffer(buffer));
+  }, [filename]);
 
   const handlePlayPause = () => {
     if (isPlaying) {
@@ -73,6 +87,28 @@ const AudioPlayer = ({ filename }) => {
     }
   };
 
+  const applyEffect = () => {
+    if (!audioContext || !audioBuffer) return;
+
+    let source;
+    switch (effect) {
+      case "distortion":
+        source = applyDistortion(audioContext, audioBuffer, 400);
+        break;
+      case "delay":
+        source = applyDelay(audioContext, audioBuffer, 0.5);
+        break;
+      case "filter":
+        source = applyFilter(audioContext, audioBuffer, "lowshelf", 1000);
+        break;
+      default:
+        return;
+    }
+
+    source.start();
+    setIsPlaying(true);
+  };
+
   return (
     <div className="flex flex-col items-center space-y-4">
       <audio ref={audioRef} src={`http://localhost:3001/stream/${filename}`} />
@@ -117,6 +153,22 @@ const AudioPlayer = ({ filename }) => {
         <Input type="text" placeholder="Preset Name" id="presetName" />
         <Button onClick={() => savePreset(document.getElementById("presetName").value)} className="mt-2">
           Save Preset
+        </Button>
+      </div>
+      <div className="w-full max-w-xs">
+        <label>Effects</label>
+        <Select onValueChange={setEffect}>
+          <SelectTrigger>
+            <SelectValue placeholder="Select an effect" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="distortion">Distortion</SelectItem>
+            <SelectItem value="delay">Delay</SelectItem>
+            <SelectItem value="filter">Filter</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button onClick={applyEffect} className="mt-2">
+          Apply Effect
         </Button>
       </div>
     </div>
