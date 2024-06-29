@@ -1,134 +1,91 @@
-# audio-wizard
+# Audio Processing Application
 
-**Code Generation Request Prompt:**
+## Introduction
+Welcome to the Audio Processing Application! This application provides a suite of tools for managing and processing audio files. Whether you need to convert audio formats, edit metadata, transcribe audio, or apply various audio effects, this application has you covered.
 
-Generate a Vite React Tailwind application using JavaScript that replicates the functionalities of the provided Python script for advanced audio streaming and processing. Below are the specific requirements:
+## Installation
+Follow these steps to install and run the application:
 
-### Functional Requirements:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-repo/audio-processing-app.git
+   cd audio-processing-app
+   ```
 
-1. **Authentication:**
-   - User login with username and password.
-   - Display success or error messages based on credentials.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-2. **Audio Recording:**
-   - Interface to record audio and save it locally.
-   - Display and play the recorded audio.
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-3. **Audio Playback:**
-   - Play audio files using an audio player.
+4. **Build the application for production:**
+   ```bash
+   npm run build
+   ```
 
-4. **Audio Enhancements:**
-   - Volume, bass, treble controls.
-   - Options to add reverb and echo.
-   - Gain control.
-   - Display enhanced audio.
+5. **Preview the production build:**
+   ```bash
+   npm run preview
+   ```
 
-5. **Audio Visualization:**
-   - Plot waveform and spectrogram.
+## Features
+### Current Features
+- **Audio Conversion:** Convert audio files to different formats (WAV, MP3, FLAC, AAC).
+- **Audio Player:** Play audio files with volume, bass, and treble controls.
+- **Audio Recorder:** Record audio and remove silence or isolate vocals.
+- **Audio Transcription:** Transcribe audio files to text.
+- **Audio Waveform and Spectrogram:** Visualize audio files as waveforms and spectrograms.
+- **Batch Audio Processing:** Process multiple audio files at once.
+- **Live Audio Streaming:** Stream audio live using WebRTC.
+- **Metadata Editor:** Edit metadata of audio files including title, artist, album, genre, and cover art.
 
-6. **Silence Removal:**
-   - Remove silence from audio and save the edited file.
+### Future Features
+- **Advanced Audio Effects:** Add more audio effects like reverb, equalizer, and more.
+- **Cloud Storage Integration:** Integrate with cloud storage services for file management.
+- **User Authentication:** Add user authentication and profiles.
+- **Collaborative Editing:** Allow multiple users to collaborate on audio projects in real-time.
 
-7. **Vocal Isolation:**
-   - Isolate vocals from audio files.
+## Usage
+### Audio Conversion
+1. Navigate to the File Management page.
+2. Upload an audio file.
+3. Select the desired output format.
+4. Click "Convert" to convert the file.
 
-8. **Batch Processing:**
-   - Select and enhance multiple audio files.
+### Audio Player
+1. Select an audio file to play.
+2. Use the play, pause, and stop buttons to control playback.
+3. Adjust volume, bass, and treble using the sliders.
+4. Save and apply presets for audio settings.
 
-9. **Audio Streaming:**
-   - Stream audio files from the server.
+### Audio Recorder
+1. Click "Start Recording" to begin recording audio.
+2. Click "Stop Recording" to end the recording.
+3. The recorded audio will be processed to remove silence and isolate vocals.
 
-10. **Live Audio Streaming:**
-    - Implement live audio streaming using WebRTC.
+### Audio Transcription
+1. Upload an audio file.
+2. Click "Transcribe" to convert the audio to text.
+3. View the transcript in the provided text area.
 
-11. **File Management:**
-    - Interface for users to upload and manage their audio files.
-    - Provide options for organizing files into folders or playlists.
+### Batch Audio Processing
+1. Select multiple audio files to process.
+2. Click "Start Batch Processing" to begin processing all selected files.
 
-12. **Audio Effects Presets:**
-    - Allow users to save and apply custom presets for audio enhancements.
+### Live Audio Streaming
+1. Click "Start Streaming" to begin live audio streaming.
+2. Click "Stop Streaming" to end the stream.
 
-13. **Advanced Audio Analysis:**
-    - Include functionalities for more advanced audio analysis like pitch detection, tempo estimation, and beat tracking.
+### Metadata Editor
+1. Select an audio file to edit.
+2. Update the metadata fields (title, artist, album, genre, cover art).
+3. Click "Save Metadata" to save the changes.
 
-14. **Audio Effects Library:**
-    - Provide a library of pre-made audio effects (e.g., distortions, delays, filters) that users can apply to their audio files.
+## About Me
+This application was developed to provide a comprehensive set of tools for audio processing. Our goal is to continuously improve and expand the application's features to meet the needs of audio enthusiasts and professionals alike. Future plans include adding advanced audio effects, integrating with cloud storage services, and enabling collaborative editing.
 
-15. **Metadata Editing:**
-    - Allow users to edit metadata for their audio files, such as title, artist, album, genre, and cover art.
-
-16. **Cross-Platform Compatibility:**
-    - Ensure the application is compatible with both desktop and mobile browsers.
-
-17. **Dark Mode:**
-    - Provide an option for users to switch between light and dark themes.
-
-18. **Audio Format Conversion:**
-    - Allow users to convert audio files between different formats (e.g., MP3 to WAV, AAC to FLAC).
-
-19. **Bookmarking:**
-    - Enable users to bookmark specific time points in audio files for quick access.
-
-20. **Audio Transcription:**
-    - Provide a feature to transcribe audio files into text.
-
-### Technical Requirements:
-
-1. **Frontend:**
-   - Use React with Tailwind CSS for styling.
-   - Create functional React components for each feature.
-   - Implement a unique, aesthetically pleasing theme with a focus on clean, modern design.
-
-2. **Backend:**
-   - Use Node.js and Express.js for server-side functionalities.
-   - Implement audio processing with suitable libraries (e.g., ffmpeg).
-
-### Theme Instructions:
-
-- **Color Scheme:** Use a unique color scheme with a primary color of soft teal (#38b2ac) and complementary colors such as deep navy (#1a202c) and light gray (#edf2f7).
-- **Typography:** Use a clean, modern sans-serif font like "Poppins" for headings and "Roboto" for body text.
-- **Layout:** Ensure a responsive design with a focus on simplicity and ease of use. Utilize white space effectively to create an airy and uncluttered interface.
-- **Buttons and Controls:** Design buttons and controls with rounded corners and subtle shadows for a sleek look.
-- **Icons:** Use modern, flat icons from a library like Font Awesome or Material Icons to enhance the visual appeal.
-
-### Instructions:
-
-- **React Components:** Create components for user authentication, audio recording, playback, enhancement, visualization, batch processing, streaming, live streaming, file management, audio effects presets, advanced audio analysis, audio effects library, metadata editing, dark mode, audio format conversion, bookmarking, and audio transcription.
-- **API Endpoints:** Implement backend endpoints for handling audio processing tasks.
-- **Audio Processing:** Use appropriate JavaScript libraries.
-- **Styling:** Apply Tailwind CSS for styling and incorporate the unique theme guidelines.
-
-## Collaborate with GPT Engineer
-
-This is a [gptengineer.app](https://gptengineer.app)-synced repository 🌟🤖
-
-Changes made via gptengineer.app will be committed to this repo.
-
-If you clone this repo and push changes, you will have them reflected in the GPT Engineer UI.
-
-## Tech stack
-
-This project is built with React with shadcn-ui and Tailwind CSS.
-
-- Vite
-- React
-- shadcn/ui
-- Tailwind CSS
-
-## Setup
-
-```sh
-git clone https://github.com/GPT-Engineer-App/audio-wizard.git
-cd audio-wizard
-npm i
-```
-
-```sh
-npm run dev
-```
-
-This will run a dev server with auto reloading and an instant preview.
-
-## Requirements
-
-- Node.js & npm - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Thank you for using the Audio Processing Application! We hope it helps you achieve your audio processing goals.
