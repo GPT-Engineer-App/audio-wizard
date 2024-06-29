@@ -34,7 +34,7 @@ const Index = () => {
         <div className="mb-4 responsive-margin">
           <Input
             type="text"
-            placeholder="Username"
+            placeholder="Enter your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />

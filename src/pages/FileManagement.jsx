@@ -4,9 +4,9 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import MetadataEditor from "@/components/MetadataEditor"; // Import MetadataEditor component
-import AudioConverter from "@/components/AudioConverter"; // Import AudioConverter component
-import AudioTranscription from "@/components/AudioTranscription"; // Import AudioTranscription component
+import MetadataEditor from "@/components/MetadataEditor"; // Import the MetadataEditor component
+import AudioConverter from "@/components/AudioConverter"; // Import the AudioConverter component
+import AudioTranscription from "@/components/AudioTranscription"; // Import the AudioTranscription component
 
 const FileManagement = () => {
   const [files, setFiles] = useState([]);
