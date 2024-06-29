@@ -26,7 +26,7 @@ function App() {
     
       <Routes>
         <Route exact path="/" element={<Index />} />
-      <Route path="/file-management" element={<FileManagement />} /> {/* Add the new route */}
+        <Route path="/file-management" element={<FileManagement />} /> {/* Add the new route */}
       </Routes>
     </Router>
   );
