@@ -1,14 +1,54 @@
-// Update this page (the content is just a fallback if you fail and example)
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 const Index = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState("success");
+
+  const handleLogin = () => {
+    // Dummy authentication logic
+    if (username === "user" && password === "password") {
+      setMessageType("success");
+      setMessage("Login successful!");
+    } else {
+      setMessageType("error");
+      setMessage("Invalid username or password.");
+    }
+  };
+
   return (
     <div className="h-screen w-screen flex items-center justify-center">
-      {/* Update with components here - default to put new layout sections as separate components in the components folder, and import them here */}
-      <div>
-        <h1 className="text-3xl text-center">Your Blank Canvas</h1>
-        <p className="text-center">
-          Chat with the agent to start making edits.
-        </p>
+      <div className="w-full max-w-xs">
+        <h1 className="text-3xl text-center mb-4">Login</h1>
+        <div className="mb-4">
+          <Input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <Button onClick={handleLogin} className="w-full">
+          Login
+        </Button>
+        {message && (
+          <Alert className={`mt-4 ${messageType === "error" ? "bg-red-100" : "bg-green-100"}`}>
+            <AlertTitle>{messageType === "error" ? "Error" : "Success"}</AlertTitle>
+            <AlertDescription>{message}</AlertDescription>
+          </Alert>
+        )}
       </div>
     </div>
   );
