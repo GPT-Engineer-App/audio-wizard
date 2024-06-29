@@ -17,10 +17,15 @@ const AudioPlayer = ({ filename }) => {
   const [audioContext, setAudioContext] = useState(null);
   const [audioBuffer, setAudioBuffer] = useState(null);
   const [effect, setEffect] = useState("");
+  const [bookmarks, setBookmarks] = useState([]);
+  const [bookmarkName, setBookmarkName] = useState("");
 
   useEffect(() => {
     const savedPresets = JSON.parse(localStorage.getItem("audioPresets")) || [];
     setPresets(savedPresets);
+
+    const savedBookmarks = JSON.parse(localStorage.getItem("audioBookmarks")) || [];
+    setBookmarks(savedBookmarks);
   }, []);
 
   useEffect(() => {
@@ -109,6 +114,24 @@ const AudioPlayer = ({ filename }) => {
     setIsPlaying(true);
   };
 
+  const addBookmark = () => {
+    if (!bookmarkName) {
+      toast.error("Bookmark name cannot be empty.");
+      return;
+    }
+    const newBookmark = { name: bookmarkName, time: audioRef.current.currentTime };
+    const updatedBookmarks = [...bookmarks, newBookmark];
+    setBookmarks(updatedBookmarks);
+    localStorage.setItem("audioBookmarks", JSON.stringify(updatedBookmarks));
+    toast("Bookmark added successfully!");
+  };
+
+  const goToBookmark = (time) => {
+    audioRef.current.currentTime = time;
+    audioRef.current.play();
+    setIsPlaying(true);
+  };
+
   return (
     <div className="flex flex-col items-center space-y-4 responsive-padding">
       <audio ref={audioRef} src={`http://localhost:3001/stream/${filename}`} />
@@ -170,6 +193,23 @@ const AudioPlayer = ({ filename }) => {
         <Button onClick={applyEffect} className="mt-2 responsive-button">
           Apply Effect
         </Button>
+      </div>
+      <div className="w-full max-w-xs responsive-margin">
+        <label>Bookmarks</label>
+        <Input type="text" placeholder="Bookmark Name" value={bookmarkName} onChange={(e) => setBookmarkName(e.target.value)} />
+        <Button onClick={addBookmark} className="mt-2 responsive-button">
+          Add Bookmark
+        </Button>
+        <ul className="mt-2 responsive-margin">
+          {bookmarks.map((bookmark, index) => (
+            <li key={index} className="flex justify-between items-center">
+              <span>{bookmark.name}</span>
+              <Button onClick={() => goToBookmark(bookmark.time)} className="ml-2 responsive-button">
+                Go
+              </Button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
