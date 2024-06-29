@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import AudioRecorderComponent from "@/components/AudioRecorder";
 import AudioPlayer from "@/components/AudioPlayer";
+import AudioWaveform from "@/components/AudioWaveform";
+import AudioSpectrogram from "@/components/AudioSpectrogram";
 
 const Index = () => {
   const [username, setUsername] = useState("");
@@ -53,6 +55,8 @@ const Index = () => {
         )}
         <AudioRecorderComponent />
         <AudioPlayer src="path/to/your/audio/file.mp3" />
+        <AudioWaveform src="path/to/your/audio/file.mp3" />
+        <AudioSpectrogram src="path/to/your/audio/file.mp3" />
       </div>
     </div>
   );
