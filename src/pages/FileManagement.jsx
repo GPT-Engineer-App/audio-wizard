@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import MetadataEditor from "@/components/MetadataEditor"; // Import MetadataEditor component
 import AudioConverter from "@/components/AudioConverter"; // Import AudioConverter component
+import AudioTranscription from "@/components/AudioTranscription"; // Import AudioTranscription component
 
 const FileManagement = () => {
   const [files, setFiles] = useState([]);
@@ -91,6 +92,7 @@ const FileManagement = () => {
         <MetadataEditor file={selectedFile} />
       )}
       <AudioConverter />
+      <AudioTranscription />
     </div>
   );
 };
