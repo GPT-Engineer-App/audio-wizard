@@ -4,11 +4,13 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
+import MetadataEditor from "@/components/MetadataEditor"; // Import MetadataEditor component
 
 const FileManagement = () => {
   const [files, setFiles] = useState([]);
   const [folders, setFolders] = useState([]);
   const [newFolderName, setNewFolderName] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null); // State to track selected file for metadata editing
 
   const handleFileUpload = (event) => {
     const uploadedFiles = Array.from(event.target.files);
@@ -24,6 +26,10 @@ const FileManagement = () => {
     setFolders([...folders, newFolderName]);
     setNewFolderName("");
     toast("Folder created successfully!");
+  };
+
+  const handleFileClick = (file) => {
+    setSelectedFile(file);
   };
 
   return (
@@ -46,7 +52,9 @@ const FileManagement = () => {
             <h2 className="text-xl">Uploaded Files</h2>
             <ul>
               {files.map((file, index) => (
-                <li key={index}>{file.name}</li>
+                <li key={index} onClick={() => handleFileClick(file)}>
+                  {file.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -78,6 +86,9 @@ const FileManagement = () => {
           </div>
         </TabsContent>
       </Tabs>
+      {selectedFile && (
+        <MetadataEditor file={selectedFile} />
+      )}
     </div>
   );
 };
