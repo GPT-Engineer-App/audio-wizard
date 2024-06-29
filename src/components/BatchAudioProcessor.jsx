@@ -38,9 +38,9 @@ const BatchAudioProcessor = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <input type="file" multiple onChange={handleFileSelection} />
-      <Button onClick={processFiles} disabled={processing}>
+    <div className="flex flex-col items-center space-y-4 responsive-padding">
+      <input type="file" multiple onChange={handleFileSelection} className="responsive-margin" />
+      <Button onClick={processFiles} disabled={processing} className="responsive-button">
         {processing ? `Processing... ${progress.toFixed(2)}%` : "Start Batch Processing"}
       </Button>
     </div>

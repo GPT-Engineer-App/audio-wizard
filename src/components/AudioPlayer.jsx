@@ -110,27 +110,27 @@ const AudioPlayer = ({ filename }) => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 responsive-padding">
       <audio ref={audioRef} src={`http://localhost:3001/stream/${filename}`} />
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 responsive-margin">
         <Button onClick={handlePlayPause}>
           {isPlaying ? "Pause" : "Play"}
         </Button>
         <Button onClick={handleStop}>Stop</Button>
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Volume</label>
         <Slider value={volume} onChange={handleVolumeChange} max={1} step={0.01} />
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Bass</label>
         <Slider value={bass} onChange={handleBassChange} max={100} step={1} />
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Treble</label>
         <Slider value={treble} onChange={handleTrebleChange} max={100} step={1} />
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Presets</label>
         <Select onValueChange={setSelectedPreset}>
           <SelectTrigger>
@@ -144,18 +144,18 @@ const AudioPlayer = ({ filename }) => {
             ))}
           </SelectContent>
         </Select>
-        <Button onClick={() => applyPreset(selectedPreset)} className="mt-2">
+        <Button onClick={() => applyPreset(selectedPreset)} className="mt-2 responsive-button">
           Apply Preset
         </Button>
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Save Preset</label>
         <Input type="text" placeholder="Preset Name" id="presetName" />
-        <Button onClick={() => savePreset(document.getElementById("presetName").value)} className="mt-2">
+        <Button onClick={() => savePreset(document.getElementById("presetName").value)} className="mt-2 responsive-button">
           Save Preset
         </Button>
       </div>
-      <div className="w-full max-w-xs">
+      <div className="w-full max-w-xs responsive-margin">
         <label>Effects</label>
         <Select onValueChange={setEffect}>
           <SelectTrigger>
@@ -167,7 +167,7 @@ const AudioPlayer = ({ filename }) => {
             <SelectItem value="filter">Filter</SelectItem>
           </SelectContent>
         </Select>
-        <Button onClick={applyEffect} className="mt-2">
+        <Button onClick={applyEffect} className="mt-2 responsive-button">
           Apply Effect
         </Button>
       </div>

@@ -33,14 +33,14 @@ const FileManagement = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="container p-4 responsive-padding">
       <Tabs defaultValue="files">
-        <TabsList>
+        <TabsList className="responsive-margin">
           <TabsTrigger value="files">Files</TabsTrigger>
           <TabsTrigger value="folders">Folders</TabsTrigger>
         </TabsList>
         <TabsContent value="files">
-          <Card>
+          <Card className="responsive-margin">
             <CardHeader>
               <CardTitle>Upload Files</CardTitle>
             </CardHeader>
@@ -48,9 +48,9 @@ const FileManagement = () => {
               <Input type="file" multiple onChange={handleFileUpload} />
             </CardContent>
           </Card>
-          <div className="mt-4">
-            <h2 className="text-xl">Uploaded Files</h2>
-            <ul>
+          <div className="mt-4 responsive-margin">
+            <h2 className="text-xl responsive-text">Uploaded Files</h2>
+            <ul className="responsive-grid">
               {files.map((file, index) => (
                 <li key={index} onClick={() => handleFileClick(file)}>
                   {file.name}
@@ -60,7 +60,7 @@ const FileManagement = () => {
           </div>
         </TabsContent>
         <TabsContent value="folders">
-          <Card>
+          <Card className="responsive-margin">
             <CardHeader>
               <CardTitle>Create Folder</CardTitle>
             </CardHeader>
@@ -71,14 +71,14 @@ const FileManagement = () => {
                 value={newFolderName}
                 onChange={(e) => setNewFolderName(e.target.value)}
               />
-              <Button onClick={handleCreateFolder} className="mt-2">
+              <Button onClick={handleCreateFolder} className="mt-2 responsive-button">
                 Create Folder
               </Button>
             </CardContent>
           </Card>
-          <div className="mt-4">
-            <h2 className="text-xl">Folders</h2>
-            <ul>
+          <div className="mt-4 responsive-margin">
+            <h2 className="text-xl responsive-text">Folders</h2>
+            <ul className="responsive-grid">
               {folders.map((folder, index) => (
                 <li key={index}>{folder}</li>
               ))}
