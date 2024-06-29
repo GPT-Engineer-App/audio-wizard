@@ -42,13 +42,13 @@ const LiveAudioStream = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <audio ref={audioRef} autoPlay />
-      <div className="flex space-x-2">
-        <Button onClick={startStreaming} disabled={isStreaming}>
+    <div className="flex flex-col items-center space-y-4 responsive-padding">
+      <audio ref={audioRef} autoPlay className="responsive-margin" />
+      <div className="flex space-x-2 responsive-margin">
+        <Button onClick={startStreaming} disabled={isStreaming} className="responsive-button">
           Start Streaming
         </Button>
-        <Button onClick={stopStreaming} disabled={!isStreaming}>
+        <Button onClick={stopStreaming} disabled={!isStreaming} className="responsive-button">
           Stop Streaming
         </Button>
       </div>

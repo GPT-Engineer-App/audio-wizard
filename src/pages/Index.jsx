@@ -28,10 +28,10 @@ const Index = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center">
-      <div className="w-full max-w-xs">
-        <h1 className="text-3xl text-center mb-4">Login</h1>
-        <div className="mb-4">
+    <div className="container h-screen w-screen flex items-center justify-center">
+      <div className="w-full max-w-xs responsive-padding">
+        <h1 className="text-3xl text-center mb-4 responsive-text">Login</h1>
+        <div className="mb-4 responsive-margin">
           <Input
             type="text"
             placeholder="Username"
@@ -39,7 +39,7 @@ const Index = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <Input
             type="password"
             placeholder="Password"
@@ -47,7 +47,7 @@ const Index = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button onClick={handleLogin} className="w-full">
+        <Button onClick={handleLogin} className="w-full responsive-button">
           Login
         </Button>
         {message && (
@@ -62,9 +62,9 @@ const Index = () => {
         <AudioSpectrogram src="path/to/your/audio/file.mp3" />
         <BatchAudioProcessor />
         <LiveAudioStream />
-        <div className="mt-4">
+        <div className="mt-4 responsive-margin">
           <Link to="/file-management">
-            <Button className="w-full">Go to File Management</Button>
+            <Button className="w-full responsive-button">Go to File Management</Button>
           </Link>
         </div>
       </div>

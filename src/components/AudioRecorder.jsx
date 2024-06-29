@@ -32,12 +32,12 @@ const AudioRecorderComponent = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <Button onClick={isRecording ? handleStopRecording : handleStartRecording}>
+    <div className="flex flex-col items-center space-y-4 responsive-padding">
+      <Button onClick={isRecording ? handleStopRecording : handleStartRecording} className="responsive-button">
         {isRecording ? "Stop Recording" : "Start Recording"}
       </Button>
       {audioURL && (
-        <div className="mt-4">
+        <div className="mt-4 responsive-margin">
           <audio controls src={audioURL} />
         </div>
       )}

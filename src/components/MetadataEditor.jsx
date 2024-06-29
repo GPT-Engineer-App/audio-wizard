@@ -17,12 +17,12 @@ const MetadataEditor = ({ file }) => {
   };
 
   return (
-    <Card className="mt-4">
+    <Card className="mt-4 responsive-margin">
       <CardHeader>
         <CardTitle>Edit Metadata for {file.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <label>Title</label>
           <Input
             type="text"
@@ -31,7 +31,7 @@ const MetadataEditor = ({ file }) => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <label>Artist</label>
           <Input
             type="text"
@@ -40,7 +40,7 @@ const MetadataEditor = ({ file }) => {
             onChange={(e) => setArtist(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <label>Album</label>
           <Input
             type="text"
@@ -49,7 +49,7 @@ const MetadataEditor = ({ file }) => {
             onChange={(e) => setAlbum(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <label>Genre</label>
           <Input
             type="text"
@@ -58,14 +58,14 @@ const MetadataEditor = ({ file }) => {
             onChange={(e) => setGenre(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 responsive-margin">
           <label>Cover Art</label>
           <Input
             type="file"
             onChange={(e) => setCoverArt(e.target.files[0])}
           />
         </div>
-        <Button onClick={handleSaveMetadata}>Save Metadata</Button>
+        <Button onClick={handleSaveMetadata} className="responsive-button">Save Metadata</Button>
       </CardContent>
     </Card>
   );
